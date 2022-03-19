@@ -1,0 +1,32 @@
+{
+  "name": "calendar",
+  "version": "1.0.0",
+  "description": "*** # The calendar web application emulating the look and functionality of Google Calendar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.6.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zhemchuzhnykov/calender.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Zhemchuzhnykov/calender/issues"
+  },
+  "homepage": "https://github.com/Zhemchuzhnykov/calender#readme"
+}

@@ -1,0 +1,38 @@
+// стили навигации
+
+.header {
+  display: flex;
+  padding: 15px 50px 15px 50px;
+  border-bottom: 1px solid $light-grey;
+  width: 100vw;
+  min-height: 70px;
+  position: fixed;
+  z-index: 4;
+  background-color: white;
+
+  & .create-event-btn {
+    margin-right: 20px;
+  
+    &:hover {
+      background-color: $dark-grey;
+    }
+  }
+
+  & .navigation {
+    width: 300px;
+    display: flex;
+    align-items: center;
+
+    & .navigation__today-btn {
+      margin-right: 30px;
+      
+      &:hover {
+        background-color: $dark-grey;
+      }
+    }
+
+    & .navigation__displayed-month {
+      margin-left: 20px;
+    }
+  }
+};

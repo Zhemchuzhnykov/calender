@@ -1,0 +1,46 @@
+.event {
+  position: absolute;
+  background-color: $blue-parts;
+  width: 85%;
+  border-radius: 5%;
+  padding: 5px 10px 0px 10px;
+  opacity: 0.8;
+  z-index: 1;
+
+  &__title {
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-right: 5px;
+  }
+
+  &__time {
+    color: white;
+  }
+
+  &__description {
+    color: white;
+    margin-top: 5px;
+  }
+}
+
+// to optimize the display of the event title when an event is long
+
+.event__title_long {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+// to optimize the display of the event description when an event is short
+.event__description_short {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// added when an event is too short to display a title
+
+.very-short-event {
+  font-size: 7px;
+}

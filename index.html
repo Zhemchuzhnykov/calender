@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calendar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css"
+      integrity="sha256-WAgYcAck1C1/zEl5sBl5cfyhxtLgKGdpI3oKyJffVRI="
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="styles/styles.css" />
+  </head>
+
+  <body class="page">
+    
+    <header class="header">
+      <button class="button create-event-btn">
+        <i class="fas fa-plus create-event-btn__icon"></i>Create
+      </button>
+      <div class="navigation">
+        <button data-direction="today" class="navigation__today-btn button">
+          Today
+        </button>
+        <button data-direction="prev" class="icon-button navigation__nav-icon">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button data-direction="next" class="icon-button navigation__nav-icon">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <span class="navigation__displayed-month">Jun - Jul 2019</span>
+      </div>
+    </header>
+    <section class="calendar">
+      <header class="calendar__header"></header>
+      <div class="calendar__body">
+        <div class="calendar__week-container">
+          <div class="calendar__time-scale"></div>
+          <div class="calendar__week"></div>
+        </div>
+      </div>
+    </section>
+    <div class="modal hidden overlay">
+      <div class="modal__content">
+        <div class="create-event">
+          <button class="create-event__close-btn">
+            <i class="fa-solid fa-xmark close-btn-icon"></i>
+          </button>
+          <form class="event-form">
+            <input
+              type="text"
+              name="title"
+              placeholder="Title"
+              class="event-form__field event-form__field_title"
+            />
+            <div class="event-form__time">
+              <input type="date" name="date" class="event-form__time_date event-form__field" />
+              <input
+                type="time"
+                name="startTime"
+                class="event-form__time_hours-min event-form__time_beginning event-form__field"
+              />
+              <span>-</span>
+              <input
+                type="time"
+                name="endTime"
+                class="event-form__time_hours-min event-form__time_end event-form__field"
+              />
+            </div>
+            <textarea
+              name="description"
+              placeholder="Description"
+              class="event-form__field event-form__field_description"
+            ></textarea>
+            <button type="submit" class="event-form__submit-btn">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="popup hidden">
+      <div class="popup__content">
+        <button class="delete-event-btn">
+          <i class="fa-solid fa-trash delete-event-btn-icon"></i> Delete
+        </button>
+      </div>
+    </div>
+    <script src="scripts/index.js" type="module"></script>
+  </body>
+</html>

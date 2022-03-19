@@ -1,0 +1,127 @@
+.calendar__header {
+  display: flex;
+  position: fixed;
+  top: 70px;
+  width: 100vw;
+  z-index: 4;
+  background-color: white;
+  
+  & .calendar__timezone {
+    width: 90px;
+    height: 100px;
+    font-size: 12px;
+    text-align: right;
+    padding-top: 83px;
+    position: relative;
+    opacity: 0.8;
+    padding-right: 10px;
+
+    &-animated-line {
+      height: 1px;
+      width: 30px;
+      background: linear-gradient(to left, $light-grey, white);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+
+  & .day-label {
+    flex: 1;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    opacity: 0.8;
+    position: relative;
+
+    &__day-name_today {
+      color: $blue-parts;
+    }
+
+    &__day-number {
+      font-size: 26px;
+
+      &_today {
+        color: white;
+        background-color: $blue-parts;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+      }
+    }
+
+    &__downside-line {
+      height: 1px;
+      width: 100%;
+      background-color: $light-grey;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    &:last-child > .day-label__downside-line {
+      background: linear-gradient(to right, $light-grey, white);
+    }
+  }
+}
+
+// timezone downside line animation
+
+@keyframes leftAnimatedLineLong {
+  from {
+    width: 30px;
+  } 
+  to {
+    width: 90px;
+  }
+}
+
+@keyframes leftAnimatedLineShort {
+  from {
+    width: 90px;
+  } 
+  to {
+    width: 30px;
+  }
+}
+
+.animated-left-line-long {
+  animation: leftAnimatedLineLong 1s forwards;
+}
+
+.animated-left-line-short {
+  animation: leftAnimatedLineShort 1s forwards;
+}
+
+// last day in a week downside line animation
+
+@keyframes rightAnimatedLineShort {
+  from {
+    width: 100%;
+  } 
+  to {
+    width: 50%;
+  }
+}
+
+@keyframes rightAnimatedLineLong {
+  from {
+    width: 50%;
+  } 
+  to {
+    width: 100%;
+  }
+}
+
+.animated-right-line-short {
+  animation: rightAnimatedLineShort 1s forwards;
+}
+
+.animated-right-line-long {
+  animation: rightAnimatedLineLong 1s forwards;
+}

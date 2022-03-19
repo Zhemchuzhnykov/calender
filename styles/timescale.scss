@@ -1,0 +1,40 @@
+.calendar__body {
+  position: relative;
+  top: 170.5px;
+}
+
+.calendar__time-scale {
+  width: 90px;
+
+  & .time-slot {
+    height: 60px;
+    position: relative;
+
+    & .short-vertical-line {
+      height: 45px;
+      width: 1px;
+      background: linear-gradient(to top, $light-grey, white);
+      position: absolute;
+      top: -46px;
+      right: -1px;
+      z-index: 3;
+    }
+
+    &__time {
+      position: absolute;
+      bottom: -6px;
+      right: 30px;
+      font-size: 12px;
+      opacity: 0.8;
+    }
+
+    & .short-horizontal-line {
+      height: 1px;
+      width: 30px;
+      background: linear-gradient(to left, $light-grey, white);
+      position: absolute;
+      bottom: 0;
+      right: 0;
+    }
+  }
+}

@@ -1,0 +1,51 @@
+.calendar__week-container {
+  display: flex;
+}
+
+.calendar__week {
+  width: 100%;
+  display: flex;
+}
+
+.calendar__day {
+  flex: 1;
+  border-left: 1px solid $light-grey;
+
+  & .calendar__time-slot {
+    height: 60px;
+    border-bottom: 1px solid $light-grey;
+    position: relative;
+
+    & .short-vertical-line {
+      height: 45px;
+      width: 1px;
+      background: linear-gradient(to top, $light-grey, white);
+      position: absolute;
+      right: -1px;
+      z-index: 4;
+    }
+
+    & .current-time-figure {
+      position: absolute;
+      left: 0;
+      display: flex;
+      align-items: center;
+      width: 100%;
+
+      &_circle {
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+        background-color: red;
+        z-index: 2;
+      }
+
+      &_line {
+        flex: 1;
+        height: 1px;
+        background-color: red;
+        z-index: 2;
+      }
+    }
+  }
+}
