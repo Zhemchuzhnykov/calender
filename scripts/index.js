@@ -3,12 +3,11 @@ import { renderHeader } from './calendar/header.js';
 import { renderTimescale } from './calendar/timescale.js';
 import { renderWeek, renderCurrentTimeIndicator } from './calendar/calendar.js';
 import { renderEvents, onDeleteEvent, handleEventClick, deleteButtonPlacement, deleteBtnWindowOffset } from './events/events.js';
-import { addDateTime, openModal, closeModal, closeModalWithExternalClick, openEventEditor, 
+import { addDateTime, openModal, closeModal, closeFormWithExternalClick, openEventEditor, 
 eventFormPlacement, eventFromWindowOffset } from './common/modal.js';
-import { displayHideEventForm, initEventForm } from './events/createEvent.js';
-
-// dynamic elements to be assigned after the render of the sections
-let shortVerticalLines, linePositionY, rightAnimatedLine, leftAnimatedLine;
+import { onClickOnCreateBtn, initEventForm } from './events/createEvent.js';
+import { shortVerticalLines, rightAnimatedLine, leftAnimatedLine, captureOfDynamicElements, 
+  changedLeftLine, changedRightLine } from './dynamic/dynamic.js';
 
 // rendering of all calendar sections, renewal of the sections
 initNavigation();
@@ -17,20 +16,12 @@ renderTimescale();
 renderWeek();
 renderEvents();
 renderCurrentTimeIndicator();
-setInterval(renderCurrentTimeIndicator, 60000);
+setInterval(renderCurrentTimeIndicator, 60000); // to renew the current time line every minute
 addDateTime(new Date(), null);
-captureOfDynamicElements();
+captureOfDynamicElements(); /* for sticking the short vertical lines protruding from the calendar slots section
+to the header, and for animating left and right lines of the calendar header (effect of a running line when scrolled) */
 
-/* for sticking the short vertical lines protruding from the calendar slots section to the header,
-and for animating left and right lines of the calendar header (effect of a running line when scrolled) */
-function captureOfDynamicElements() {
-  shortVerticalLines = Array.from(document.querySelectorAll('.short-vertical-line'));
-  rightAnimatedLine = document.querySelector('.day-label:last-child > .day-label__downside-line');
-  leftAnimatedLine = document.querySelector('.calendar__timezone-animated-line');
-  renderCurrentTimeIndicator();
-};
-
-// event listeners for users' clicks
+// event listeners for users' actions
 const createButton = document.querySelector('.create-event-btn');
 const closeEventFormButton = document.querySelector('.create-event__close-btn');
 const eventForm = document.querySelector('.event-form');
@@ -44,46 +35,21 @@ const createEditEventForm = document.querySelector('.modal');
 calendarTimeSlots.addEventListener('click', openModal);
 calendarTimeSlots.addEventListener('click', handleEventClick);
 window.addEventListener('dblclick', openEventEditor);
-window.addEventListener('mousedown', closeModalWithExternalClick);
-window.addEventListener('click', closeModalWithExternalClick);
-createButton.addEventListener('click', displayHideEventForm);
+window.addEventListener('mousedown', closeFormWithExternalClick);
+createButton.addEventListener('click', onClickOnCreateBtn);
 closeEventFormButton.addEventListener('click', closeModal);
 eventForm.addEventListener('submit', initEventForm);
 navElem.addEventListener('click', captureOfDynamicElements);
 todayButton.addEventListener('click', returnToCurrentWeek);
 deleteEventButton.addEventListener('click', onDeleteEvent);
+window.addEventListener('scroll', changedLeftLine); // animating left timezone line
+window.addEventListener('scroll', changedRightLine); // animating sunday bottom line
 
-// animating left timezone line
-const changedLeftLine = () => {
-  if (window.pageYOffset !== 0) {
-    leftAnimatedLine.classList.remove('animated-left-line-short');
-    leftAnimatedLine.classList.add('animated-left-line-long');
-    return;
-  };
-
-    leftAnimatedLine.classList.remove('animated-left-line-long');
-    leftAnimatedLine.classList.add('animated-left-line-short');
-};
-window.addEventListener('scroll', changedLeftLine);
-
-// animating sunday bottom line
-const changedRightLine = () => {
-  if (window.pageYOffset !== 0) {
-    rightAnimatedLine.classList.remove('animated-right-line-long');
-    rightAnimatedLine.classList.add('animated-right-line-short');
-    return;
-  };
-
-    rightAnimatedLine.classList.remove('animated-right-line-short');
-    rightAnimatedLine.classList.add('animated-right-line-long');
-};
-
-window.addEventListener('scroll', changedRightLine);
-
-// sticking the position of the short vertical lines to the header and sticking the delete button to its event
+/* sticking the position of the short vertical lines to the header and sticking the delete button to its event,
+  and sticking the position of the create-, edit-event form at the place where it is opened */
 window.addEventListener("scroll", function(event) {
   let scroll_y = this.scrollY;
-  linePositionY = -46;
+  const linePositionY = -46;
   let newElementPosition = linePositionY + scroll_y;
   shortVerticalLines.map(line => {
     line.style.setProperty('top', `${newElementPosition}px`);

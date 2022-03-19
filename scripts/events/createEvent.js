@@ -93,7 +93,7 @@ export function initEventForm(event) {
 };
 
 // displays and hides the create-event form after clicks on Create in navigation and close button on the form
-export const displayHideEventForm = () => {
+export const onClickOnCreateBtn = () => {
    
   /* the button Create will close the create-, edit-event form or delete button if they are opened 
   when the button is clicked, and will not open a new instance of the create-event form*/

@@ -210,19 +210,13 @@ export const closeModal = () => {
 
 /* if the create-, or edit-event form, or delete button is opened, an external click (a click at any place in the 
   intuitively expected area) will, first, close the opened form/button and ignore calling opening at the clicked place */
-export const closeModalWithExternalClick = (event) => {
+export const closeFormWithExternalClick = (event) => {
   // closes the create-event form when it is opened with the click on the button Create in the navigation
-  if(event.target === modalElem && event.type === 'mousedown') modalElem.classList.add('hidden');
-
-  // closes the delete-event button
-  const deleteButtonClicked = event.target.closest('.delete-event-btn');
-  if (!deleteEventElement.classList.contains('hidden') && deleteButtonClicked === null && event.type === 'click') {
-    closePopup();
-  };
+  if(event.target === modalElem) modalElem.classList.add('hidden');
   
 // not to change list of events if the edit-event form's not submitted and external click closes the edit-event form
   const externalClick = event.target.closest('.modal');
-  if(externalClick === null && modalElem.classList.contains('edit-form') && event.type === 'mousedown') {
+  if(externalClick === null && modalElem.classList.contains('edit-form')) {
     setItem('events', [...filteredArray, ...removedEvent]);
     removedEvent = null;
     modalElem.classList.remove('edit-form');
