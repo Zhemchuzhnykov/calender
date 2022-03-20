@@ -12,19 +12,23 @@
   border: 1px solid #ccc;
   outline: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
 }
 
 .create-event-btn {
-  width: 100px;
+  width: 110px;
+  margin-right: 30px;
+}
+.create-event-btn:hover {
+  background-color: #a9a9a9;
 }
 .create-event-btn__icon {
   margin-right: 10px;
 }
 
 .navigation__today-btn {
-  width: 80px;
+  width: 100px;
 }
 
 .icon-button {
@@ -42,9 +46,9 @@
 }
 .modal__content {
   background: #fff;
-  padding: 16px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  padding: 16px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
@@ -65,11 +69,11 @@
   position: absolute;
 }
 .popup .delete-event-btn {
-  border: 0.5px solid #d3d3d3;
   background-color: white;
   font-size: 25px;
   height: 50px;
   width: 150px;
+  border: 0.5px solid #d3d3d3;
   border-radius: 6px;
   box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
 }
@@ -95,12 +99,6 @@
   position: fixed;
   z-index: 4;
   background-color: white;
-}
-.header .create-event-btn {
-  margin-right: 20px;
-}
-.header .create-event-btn:hover {
-  background-color: #a9a9a9;
 }
 .header .navigation {
   width: 300px;
