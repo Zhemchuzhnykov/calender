@@ -1,17 +1,13 @@
-.modal {
-  z-index: 3;
-}
-
 .create-event {
-  position: relative;
   padding: 10px;
+  position: relative;
 
   &__close-btn {
     position: absolute;
     right: 4px;
     top: 4px;
-    border: none;
     background-color: transparent;
+    border: none;
     z-index: 1;
 
     &:hover {
@@ -31,11 +27,11 @@
   position: relative;
 
   &__field {
-    border: none;
-    margin-bottom: 30px;
-    font-size: 25px;
-    outline: none;
     width: 100%;
+    border: none;
+    outline: none;
+    font-size: 25px;
+    margin-bottom: 30px;
 
     &_title {
       width: 300px;
@@ -49,15 +45,11 @@
     margin-bottom: 30px;
     
     &_date {
-      border: none;
-      outline: none;
       width: 120px;
       font-size: 15px;
     }
 
     &_hours-min {
-      border: none;
-      outline: none;
       width: 90px;
       font-size: 15px;
     }
@@ -67,9 +59,9 @@
     position: absolute;
     right: 0;
     bottom: 0;
-    border-radius: 3px;
-    border: 0.5px solid $light-grey;
     background-color: white;
+    border: 0.5px solid $light-grey;
+    border-radius: 3px;
 
     &:hover {
       background-color: $light-grey;
@@ -79,19 +71,19 @@
 }
 
 input[type="date"]::-webkit-calendar-picker-indicator {
-  width: 20px;
-  padding: 0px;
-  margin: 0px;
   position: relative;
   right: 10px;
+  margin: 0px;
+}
+
+input[type=time]::-webkit-datetime-edit-hour-field {
+  padding: 0;
 }
 
 input[type="time"]::-webkit-calendar-picker-indicator {
-  width: 20px;
-  padding: 0px;
-  margin: 0px;
   position: relative;
-  right: -2px;
+  right: 2px;
+  margin: 0px;
 }
 
 input[type=time]::-webkit-datetime-edit-ampm-field {
