@@ -3,8 +3,8 @@
 }
 
 .calendar__week {
-  width: 100%;
   display: flex;
+  width: 100%;
 }
 
 .calendar__day {
@@ -17,12 +17,12 @@
     position: relative;
 
     & .short-vertical-line {
-      height: 45px;
-      width: 1px;
-      background: linear-gradient(to top, $light-grey, white);
       position: absolute;
       right: -1px;
       z-index: 4;
+      height: 45px;
+      width: 1px;
+      background: linear-gradient(to top, $light-grey, white);
     }
 
     & .current-time-figure {
