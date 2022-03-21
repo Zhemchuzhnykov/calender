@@ -23,6 +23,11 @@
 
 .navigation__today-btn {
   width: 100px;
+  margin-right: 30px;
+      
+  &:hover {
+    background-color: $dark-grey;
+  }
 }
 
 .icon-button {
