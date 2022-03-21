@@ -1,8 +1,3 @@
-.calendar__body {
-  position: relative;
-  top: 170.5px;
-}
-
 .calendar__time-scale {
   width: 90px;
 
@@ -11,13 +6,13 @@
     position: relative;
 
     & .short-vertical-line {
-      height: 45px;
-      width: 1px;
-      background: linear-gradient(to top, $light-grey, white);
       position: absolute;
       top: -46px;
       right: -1px;
+      height: 45px;
+      width: 1px;
       z-index: 4;
+      background: linear-gradient(to top, $light-grey, white);
     }
 
     &__time {
@@ -29,12 +24,12 @@
     }
 
     & .short-horizontal-line {
-      height: 1px;
-      width: 30px;
-      background: linear-gradient(to left, $light-grey, white);
       position: absolute;
       bottom: 0;
       right: 0;
+      height: 1px;
+      width: 30px;
+      background: linear-gradient(to left, $light-grey, white);
     }
   }
 }

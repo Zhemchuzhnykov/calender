@@ -219,11 +219,6 @@
   animation: rightAnimatedLineLong 1s forwards;
 }
 
-.calendar__body {
-  position: relative;
-  top: 170.5px;
-}
-
 .calendar__time-scale {
   width: 90px;
 }
@@ -232,13 +227,13 @@
   position: relative;
 }
 .calendar__time-scale .time-slot .short-vertical-line {
-  height: 45px;
-  width: 1px;
-  background: linear-gradient(to top, #d3d3d3, white);
   position: absolute;
   top: -46px;
   right: -1px;
+  height: 45px;
+  width: 1px;
   z-index: 4;
+  background: linear-gradient(to top, #d3d3d3, white);
 }
 .calendar__time-scale .time-slot__time {
   position: absolute;
@@ -248,12 +243,12 @@
   opacity: 0.8;
 }
 .calendar__time-scale .time-slot .short-horizontal-line {
-  height: 1px;
-  width: 30px;
-  background: linear-gradient(to left, #d3d3d3, white);
   position: absolute;
   bottom: 0;
   right: 0;
+  height: 1px;
+  width: 30px;
+  background: linear-gradient(to left, #d3d3d3, white);
 }
 
 .create-event {
@@ -377,11 +372,14 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   font-size: 7px;
 }
 
-.calendar__week-container {
+.calendar__body {
+  position: relative;
+  top: 170.5px;
+}
+.calendar__body .calendar__week-container {
   display: flex;
 }
-
-.calendar__week {
+.calendar__body .calendar__week-container .calendar__week {
   display: flex;
   width: 100%;
 }

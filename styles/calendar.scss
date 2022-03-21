@@ -1,10 +1,15 @@
-.calendar__week-container {
-  display: flex;
-}
+.calendar__body {
+  position: relative;
+  top: 170.5px;
 
-.calendar__week {
-  display: flex;
-  width: 100%;
+  & .calendar__week-container {
+    display: flex;
+
+    & .calendar__week {
+      display: flex;
+      width: 100%;
+    }
+  }
 }
 
 .calendar__day {
