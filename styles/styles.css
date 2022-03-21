@@ -361,7 +361,6 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  margin-right: 5px;
 }
 .event__time {
   color: white;
