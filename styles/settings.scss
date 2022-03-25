@@ -1,0 +1,11 @@
+.settings {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  letter-spacing: 1px;
+  padding: 0px 10px;
+
+  &__icon {
+    margin-left: 5px;
+  }
+}
