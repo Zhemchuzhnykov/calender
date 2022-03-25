@@ -1,0 +1,54 @@
+@import '../variables.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.settings__header {
+  margin-left: 20px;
+  
+  &-line {
+    width: 500px;
+    height: 1px;
+    background: linear-gradient(to right, $light-grey, white);
+  }
+}
+
+.settings__list {
+  margin-left: 20px;
+
+  &-item {
+    line-height: 40px;
+    position: relative;
+
+    &-line {
+      position: relative;
+      left: -20px;
+      width: 400px;
+      height: 1px;
+      background: linear-gradient(to right, $light-grey, white);
+    }
+  }
+
+  & .event-color {
+    position: relative;
+    top: 7px;
+    -webkit-appearance: none;
+	  border: none;
+    background-color: transparent;
+    height: 30px;
+  }
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+	padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+	border: none;
+  border-radius: 5px;
+}
