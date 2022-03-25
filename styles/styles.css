@@ -421,6 +421,9 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
   display: flex;
   align-items: center;
   letter-spacing: 1px;
+  text-decoration: none;
+}
+.settings__button {
   padding: 0px 10px;
 }
 .settings__icon {
