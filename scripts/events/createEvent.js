@@ -23,8 +23,10 @@ function eventValidator(checkedEvent) {
   // intersections of events
   const intersectionOfEvents = getItem('events').filter(event => {
 
-    const intersectionBeforeFinished = checkedEvent.start.getTime() >= event.start.getTime() && checkedEvent.start.getTime() < event.end.getTime() ? event: false;
-    const intersectionAfterStarted = checkedEvent.end.getTime() > event.start.getTime() && checkedEvent.end.getTime() < event.end.getTime() ? event: false;
+    const intersectionBeforeFinished = new Date(checkedEvent.start).getTime() >= new Date(event.start).getTime() 
+      && new Date(checkedEvent.start).getTime() < new Date(event.end).getTime() ? event: false;
+    const intersectionAfterStarted = new Date(checkedEvent.end).getTime() > new Date(event.start).getTime() 
+      && new Date(checkedEvent.end).getTime() < new Date(event.end).getTime() ? event: false;
     return intersectionBeforeFinished !== false || intersectionAfterStarted !== false;
   });
 
@@ -81,6 +83,10 @@ function onCreateEvent(event) {
 
 // renders an event and resets the create-, edit-event form properties to default
 export function initEventForm(event) {
+
+  // to prevent the page from refreshing
+  event.preventDefault();
+
   // if an event is submitted as an edited existing event, filteredArray is an updated list of events //
   if(createEventForm.classList.contains('edit-form')) setItem('events', filteredArray);
   onCreateEvent(event);

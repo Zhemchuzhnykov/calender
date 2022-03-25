@@ -8,6 +8,13 @@ import { onClickOnCreateBtn, initEventForm } from './events/createEvent.js';
 import { shortVerticalLines, rightAnimatedLine, leftAnimatedLine, captureOfDynamicElements, 
   changedLeftLine, changedRightLine, fixElemWhenScrolled } from './dynamic/dynamic.js';
 
+// to initiate storage items if the local storage is empty
+if (localStorage.getItem('events') === null) {
+  localStorage.setItem('eventIdToDelete', JSON.stringify(null));
+  localStorage.setItem('displayedWeekStart', JSON.stringify(null));
+  localStorage.setItem('events', JSON.stringify([]));
+};
+
 // rendering of all calendar sections, renewal of the sections
 initNavigation();
 renderHeader();
@@ -30,7 +37,7 @@ const deleteButtonContainer = document.querySelector('.popup');
 const deleteEventButton = document.querySelector('.popup__content');
 const createEditEventForm = document.querySelector('.modal');
 
-// event listeners for users' actions
+// event listeners for users' actions, and tab navigation
 calendarTimeSlots.addEventListener('click', openModal);
 calendarTimeSlots.addEventListener('click', handleEventClick);
 window.addEventListener('dblclick', openEventEditor);
@@ -44,3 +51,4 @@ deleteEventButton.addEventListener('click', onDeleteEvent);
 window.addEventListener('scroll', changedLeftLine); // animating left timezone line
 window.addEventListener('scroll', changedRightLine); // animating sunday bottom line
 window.addEventListener('scroll', fixElemWhenScrolled); // retains positions of elements when a page is scrolled
+window.addEventListener('storage', renderEvents);

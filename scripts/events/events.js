@@ -54,8 +54,8 @@ export function handleEventClick(event) {
 export const createEventElement = (event) => {
 
   // receives the date and hour of an event
-  const eventDate = event.start.getDate();
-  const eventHour = event.start.getHours();
+  const eventDate = new Date(event.start).getDate();
+  const eventHour = new Date(event.start).getHours();
 
   // for regulating the display of the event parts depending on the size/length of an event
   let eventDescription = '';
@@ -69,7 +69,7 @@ export const createEventElement = (event) => {
   // creates an event element
   const eventElement = document.createElement('div');
 
-  const eventDuration = ((event.end.getHours() * 60) + event.end.getMinutes()) - ((event.start.getHours() * 60) + event.start.getMinutes());
+  const eventDuration = ((new Date(event.end).getHours() * 60) + new Date(event.end).getMinutes()) - ((new Date(event.start).getHours() * 60) + new Date(event.start).getMinutes());
 
   const sizeDependantProperties = () => {
     let result = eventDuration <= 30 ? 'font-size: 11px; padding: 3px 10px 0px 10px; display: flex;': 
@@ -86,7 +86,7 @@ export const createEventElement = (event) => {
   const attributes = {
     'data-event-id': `${event.id}`,
     'class': 'event',
-    'style': `top: ${event.start.getMinutes()}px; 
+    'style': `top: ${new Date(event.start).getMinutes()}px; 
     height: ${eventDuration}px;
     ${sizeDependantProperties()}
     `,
@@ -97,11 +97,11 @@ export const createEventElement = (event) => {
   // to display time in a correct format hh:mm
   let startMinutesPrefix = '';
   let endMinutesPrefix = '';
-  if (event.start.getMinutes() < 10) startMinutesPrefix = '0';
-  if (event.end.getMinutes() < 10) endMinutesPrefix = '0';
+  if (new Date(event.start).getMinutes() < 10) startMinutesPrefix = '0';
+  if (new Date(event.end).getMinutes() < 10) endMinutesPrefix = '0';
 
   eventElement.innerHTML = `<div class="event__title ${eventTitleLong}">${event.title}</div>
-  <div class ="event__time">${event.start.getHours()}:${startMinutesPrefix}${event.start.getMinutes()} - ${event.end.getHours()}:${endMinutesPrefix}${event.end.getMinutes()}</div>
+  <div class ="event__time">${new Date(event.start).getHours()}:${startMinutesPrefix}${new Date(event.start).getMinutes()} - ${new Date(event.end).getHours()}:${endMinutesPrefix}${new Date(event.end).getMinutes()}</div>
   ${eventDescription}`;
 
   currentDayHour.append(eventElement);
@@ -109,6 +109,8 @@ export const createEventElement = (event) => {
 
 // renders all the events to a web page
 export const renderEvents = () => {
+
+  if(getItem('events').length === 0) return;
 
   // to remove old events before rendering the event list with changes
   [...document.querySelectorAll('.event')].map(event => event.outerHTML = '');
@@ -118,8 +120,9 @@ export const renderEvents = () => {
   const endOfCurrentWeek = calculatorFunction.add('days', 7);
 
   const events = getItem('events').filter(event => {
-    if (event.start.getTime() > thisWeekStartDay.getTime() && event.end.getTime() < endOfCurrentWeek.result().getTime()) {
-      return event;
+    if (new Date(event.start).getTime() > new Date(thisWeekStartDay).getTime() 
+      && new Date(event.end).getTime() < endOfCurrentWeek.result().getTime()) {
+        return event;
     };
   })
   .map(event => { createEventElement(event)});
