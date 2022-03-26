@@ -7,12 +7,14 @@ import { addDateTime, openModal, closeModal, closeFormWithExternalClick, openEve
 import { onClickOnCreateBtn, initEventForm } from './events/createEvent.js';
 import { shortVerticalLines, rightAnimatedLine, leftAnimatedLine, captureOfDynamicElements, 
   changedLeftLine, changedRightLine, fixElemWhenScrolled } from './dynamic/dynamic.js';
+import { setColor } from './settings/color-change.js'
 
 // to initiate storage items if the local storage is empty
 if (localStorage.getItem('events') === null) {
   localStorage.setItem('eventIdToDelete', JSON.stringify(null));
   localStorage.setItem('displayedWeekStart', JSON.stringify(null));
   localStorage.setItem('events', JSON.stringify([]));
+  localStorage.setItem('eventsColor', 'blue');
 };
 
 // rendering of all calendar sections, renewal of the sections
@@ -25,6 +27,8 @@ renderCurrentTimeIndicator();
 setInterval(renderCurrentTimeIndicator, 60000); // to renew the current time line every minute
 addDateTime(new Date(), null);
 captureOfDynamicElements(); // captures dynamic elements when a layout is re-drawn for correct display upon scroll
+setColor();
+
 
 // elements against which event handlers are applied
 const createButton = document.querySelector('.create-event-btn');
@@ -52,3 +56,4 @@ window.addEventListener('scroll', changedLeftLine); // animating left timezone l
 window.addEventListener('scroll', changedRightLine); // animating sunday bottom line
 window.addEventListener('scroll', fixElemWhenScrolled); // retains positions of elements when a page is scrolled
 window.addEventListener('storage', renderEvents);
+window.addEventListener('storage', setColor);

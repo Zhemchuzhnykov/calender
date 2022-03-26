@@ -1,6 +1,7 @@
 import { getItem, setItem } from '../common/storage.js';
 import { shmoment } from '../common/shmoment.js';
 import { openPopup, closePopup } from '../common/popup.js';
+import { setColor } from '../settings/color-change.js';
 
 const deleteEventElement = document.querySelector('.popup');
 const deleteEventButton = deleteEventElement.querySelector('.popup__content');
@@ -126,6 +127,7 @@ export const renderEvents = () => {
     };
   })
   .map(event => { createEventElement(event)});
+  setColor();
 };
 
 // removes an event from the events list and renders the updated events to a web page
